@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+{% if not user.is_authenticated %}
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" name="username">Enter username </input>
+        <input type="password" name="password">Enter password </input>
+        <button type="submit">Login</button>
+    </form>
+{% else %}
+    Welcome, {{ user.username }}
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% endif %}
+
+
+</body>
+</html>

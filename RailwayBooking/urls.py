@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from railways.views import login_user, logout_view
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^login/$', login_user, name='login'),
+    url(r'^logout/$', logout_view, name='logout'),
 ]
